@@ -22,6 +22,13 @@ If you want to try Spectrum out to get a feel for it, without
 installing it, you can run it in a development VM with some example
 applications.
 
+This builds just enough of Spectrum to try it out in a VM, but it will
+still take a very long time.
+
+You can use one of the following methods to build Spectrum.
+
+=== Default
+
 [source,shell]
 ----
 git clone https://spectrum-os.org/git/spectrum
@@ -32,8 +39,17 @@ cd spectrum/host/rootfs
 nix-shell -I nixpkgs=../../../nixpkgs-spectrum --run 'make run'
 ----
 
-This builds just enough of Spectrum to try it out in a VM, but it will
-still take a very long time.
+=== Flakes
+
+Flakes is more hermetic, fast, and reproducable way of building.
+
+[source,shell]
+----
+git clone https://spectrum-os.org/git/spectrum && cd spectrum
+nix develop .#rootfs && cd host/rootfs/ && make run
+----
+
+For more information on flakes, see https://nixos.wiki/wiki/Flakes[NixOS Wiki].
 
 == Building Installer
 
